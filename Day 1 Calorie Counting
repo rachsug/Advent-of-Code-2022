@@ -1,0 +1,23 @@
+def find_max_calories(txt_file):
+    txt_file = 'AOC_day1_input.txt'
+    max_calories = 0
+    count_calories = 0
+    max_3_calories = []
+    
+    with open(txt_file) as f:
+        calories = f.readlines()
+        
+    for i in range(len(calories)):
+        if calories[i] == '\n':
+            max_3_calories.append(count_calories)
+            count_calories = 0
+            continue
+            
+        count_calories += int(calories[i])
+    max_3_calories.sort()
+        
+    return sum(max_3_calories[len(max_3_calories)-3:])
+
+
+txt_file = 'AOC_day1_input.txt'
+find_max_calories(txt_file)
